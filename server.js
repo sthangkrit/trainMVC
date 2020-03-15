@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser');
 const swaggerUi = require('swagger-ui-express')
-// var swaggerDoc = require('./Swagger/swagger.json')
+var swaggerDoc = require('./swagger/swagger.json')
 
 var port = process.env.port || 3000
 app.use(bodyParser.json());
@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use('/',require('./router/index'))
-// app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
+app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
 
 app.listen(port,function () {
